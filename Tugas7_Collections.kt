@@ -37,11 +37,11 @@ fun main(){
 
     println("======== DATA NILAI MAHASISWA ========")
     println()
-    println(String.format("%-3s %-12s %-22s %-22s %-5s", "No", "NIM", "Nama", "MataKuliah", "Nilai"))
+    println(String.format("%-3s %-12s %-25s %-22s %-5s", "No", "NIM", "Nama", "MataKuliah", "Nilai"))
     var no = 1
     for (mhs in mahasiswa){
         println(String.format(
-            "%-3s %-12s %-22s %-22s %-5s", 
+            "%-3s %-12s %-25s %-22s %-5s", 
             no++, 
             mhs.nim, 
             mhs.nama, 
@@ -79,20 +79,39 @@ fun main(){
         println("${noLulus++} ${mhs.nama} - ${mhs.nilai} (${getGrade(mhs.nilai)})")
     }
 
+    println()
+    println("======== MAHASISWA TIDAK LULUS ========")
+    var noTidakLulus = 1
+    for (mhs in tidakLulus){
+        println("${noTidakLulus++} ${mhs.nama} - ${mhs.nilai} (${getGrade(mhs.nilai)})")
+    }
+    
     //Urut Ascending
     val ascending = mahasiswa.sortedBy { it.nilai }
     println()
     println("======== URUTAN NILAI ASCENDING ========")
+    println(String.format("%-25s %-7s %-5s", "Nama", "Nilai", "Grade"))
     for (mhs in ascending){
-        println("${mhs.nama} - ${mhs.nilai}  (${getGrade(mhs.nilai)})")
+        println(
+            String.format("%-25s %-7s %-5s", 
+            mhs.nama, 
+            mhs.nilai, 
+            getGrade(mhs.nilai)
+        ))
     }
 
     //Urut Descending
     val descending = mahasiswa.sortedByDescending { it.nilai }
     println()
     println("======== URUTAN NILAI DESCENDING ========")
+    println(String.format("%-25s %-7s %-5s", "Nama", "Nilai", "Grade"))
     for (mhs in descending){
-        println("${mhs.nama} - ${mhs.nilai}  (${getGrade(mhs.nilai)})")
+        println(
+            String.format("%-25s %-7s %-5s", 
+            mhs.nama, 
+            mhs.nilai, 
+            getGrade(mhs.nilai)
+        ))
     }
 
     //Kelompok berdasarkan grade
